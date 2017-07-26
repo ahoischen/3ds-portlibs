@@ -1,21 +1,21 @@
 [submodule "jansson"]
-	path = jansson
+	path = submodules/jansson
 	url = https://github.com/akheron/jansson.git
 [submodule "giflib"]
-	path = giflib
+	path = submodules/giflib
 	url = https://git.code.sf.net/p/giflib/code
 [submodule "libjpeg-turbo"]
-	path = libjpeg-turbo
+	path = submodules/libjpeg-turbo
 	url = https://github.com/libjpeg-turbo/libjpeg-turbo.git
 [submodule "libxmp"]
-	path = libxmp
+	path = submodules/libxmp
 	url = https://github.com/cmatsuoka/libxmp.git
 [submodule "mbedtls"]
-	path = mbedtls
+	path = submodules/mbedtls
 	url = https://github.com/ARMmbed/mbedtls.git
 [submodule "tinyxml2"]
-	path = tinyxml2
+	path = submodules/tinyxml2
 	url = https://github.com/leethomason/tinyxml2.git
 [submodule "zlib"]
-	path = zlib
+	path = submodules/zlib
 	url = https://github.com/madler/zlib.git
