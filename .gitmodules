@@ -7,9 +7,6 @@
 [submodule "libjpeg-turbo"]
 	path = submodules/libjpeg-turbo
 	url = https://github.com/libjpeg-turbo/libjpeg-turbo.git
-[submodule "libxmp"]
-	path = submodules/libxmp
-	url = https://github.com/cmatsuoka/libxmp.git
 [submodule "mbedtls"]
 	path = submodules/mbedtls
 	url = https://github.com/ARMmbed/mbedtls.git
