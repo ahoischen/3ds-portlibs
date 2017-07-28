@@ -1,9 +1,2 @@
-freetype-*
-jansson-*
-libexif-*
-libjpeg-*
-libpng-*
-libxmp-*
-sqlite-*
-tinyxml2-*
-zlib-*
+*.tar
+*.tar.*
