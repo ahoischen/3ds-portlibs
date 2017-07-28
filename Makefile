@@ -66,7 +66,7 @@ XZ_DOWNLOAD           := "http://tukaani.org/xz/xz-5.2.2.tar.xz"
 ZLIB                  := zlib
 ZLIB_SRC              := submodules/$(ZLIB)
 
-SOURCE_TARBALL 		  := sources.tar.gz
+SOURCE_TARBALL 		  := sources.tar
 PORTLIBS_SRC		  := $(filter-out submodules .. ., $(wildcard * .*))
 GIT 				  := git
 
@@ -127,7 +127,7 @@ download: $(BZIP2_SRC) $(FREETYPE_SRC) $(GIFLIB_SRC) $(JANSSON_SRC) $(LIBCONFIG_
 tar-source: $(SOURCE_TARBALL)
 
 $(SOURCE_TARBALL): $(PORTLIBS_SRC) $(BZIP2_SRC) $(FREETYPE_SRC) $(GIFLIB_SRC) $(JANSSON_SRC) $(LIBCONFIG_SRC) $(LIBEXIF_SRC) $(LIBJPEGTURBO_SRC) $(LIBMAD_SRC) $(LIBOGG_SRC) $(LIBPNG_SRC) $(LIBXMP_LITE_SRC) $(MBED_APACHE_SRC) $(TINYXML_SRC) $(TREMOR_SRC) $(XZ_SRC) $(ZLIB_SRC)
-	tar cvf $@ $^
+	tar cvf $@ $^ > /dev/null 2>&1
 
 DOWNLOAD = wget --no-check-certificate -O "$(1)" "$(2)" || curl -Lo "$(1)" "$(2)"
 
