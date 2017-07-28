@@ -191,13 +191,13 @@ $(FREETYPE): $(FREETYPE_SRC)
 
 $(GIFLIB): $(GIFLIB_SRC)
 	@cd $(GIFLIB_SRC) && \
-	 autoreconf && \
+	 autoreconf -i && \
 	 ./configure --prefix=$(PORTLIBS_PATH)/armv6k --host=arm-none-eabi --disable-shared --enable-static
 	@$(MAKE) -C $(GIFLIB_SRC)
 
 $(JANSSON): $(JANSSON_SRC)
 	@cd $(JANSSON_SRC) && \
-	 autoreconf && \
+	 autoreconf -i && \
 	 ./configure --prefix=$(PORTLIBS_PATH)/armv6k --host=arm-none-eabi --disable-shared --enable-static
 	@$(MAKE) -C $(JANSSON_SRC)
 
@@ -215,7 +215,7 @@ $(LIBEXIF): $(LIBEXIF_SRC)
 
 $(LIBJPEGTURBO): $(LIBJPEGTURBO_SRC)
 	@cd $(LIBJPEGTURBO_SRC) && \
-	 autoreconf && \
+	 autoreconf -i && \
 	 ./configure --prefix=$(PORTLIBS_PATH)/armv6k --host=arm-none-eabi --disable-shared --enable-static
 	@$(MAKE) -C $(LIBJPEGTURBO_SRC)
 
