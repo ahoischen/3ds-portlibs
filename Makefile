@@ -68,6 +68,7 @@ ZLIB_SRC              := submodules/$(ZLIB)
 
 SOURCE_TARBALL 		  := sources.tar.gz
 PORTLIBS_SRC		  := $(filter-out submodules .. ., $(wildcard * .*))
+GIT 				  := git
 
 export PORTLIBS_PATH  := $(DEVKITPRO)/portlibs
 export PATH           := $(DEVKITARM)/bin:$(PORTLIBS_PATH)/3ds/bin:$(PORTLIBS_PATH)/armv6k/bin:$(PATH)
@@ -137,10 +138,10 @@ $(FREETYPE_SRC):
 	$(call DOWNLOAD,$@,$(FREETYPE_DOWNLOAD))
 
 $(GIFLIB_SRC):
-	git submodule update $(GIFLIB_SRC)
+	$(GIT) submodule update $(GIFLIB_SRC)
 
 $(JANSSON_SRC):
-	git submodule update $(JANSSON_SRC)
+	$(GIT) submodule update $(JANSSON_SRC)
 
 $(LIBCONFIG_SRC):
 	@$(call DOWNLOAD,$@,$(LIBCONFIG_DOWNLOAD))
@@ -149,7 +150,7 @@ $(LIBEXIF_SRC):
 	@$(call DOWNLOAD,$@,$(LIBEXIF_DOWNLOAD))
 
 $(LIBJPEGTURBO_SRC):
-	git submodule update $(LIBJPEGTURBO_SRC)
+	$(GIT) submodule update $(LIBJPEGTURBO_SRC)
 
 $(LIBMAD_SRC):
 	@$(call DOWNLOAD,$@,$(LIBMAD_DOWNLOAD))
@@ -164,10 +165,10 @@ $(LIBXMP_LITE_SRC):
 	@$(call DOWNLOAD,$@,$(LIBXMP_LITE_DOWNLOAD))
 
 $(MBED_APACHE_SRC):
-	git submodule update $(MBED_APACHE_SRC)
+	$(GIT) submodule update $(MBED_APACHE_SRC)
 
 $(TINYXML_SRC):
-	git submodule update $(TINYXML_SRC)
+	$(GIT) submodule update $(TINYXML_SRC)
 
 $(TREMOR_SRC):
 	@$(call DOWNLOAD,$@,$(TREMOR_DOWNLOAD))
@@ -176,7 +177,7 @@ $(XZ_SRC):
 	@$(call DOWNLOAD,$@,$(XZ_DOWNLOAD))
 
 $(ZLIB_SRC):
-	git submodule update $(ZLIB_SRC)
+	$(GIT) submodule update $(ZLIB_SRC)
 
 $(BZIP2): $(BZIP2_SRC)
 	@[ -d $(BZIP2_VERSION) ] || tar -xzf $<
