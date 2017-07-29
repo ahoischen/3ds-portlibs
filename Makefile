@@ -15,9 +15,7 @@ JANSSON               := jansson
 JANSSON_SRC           := submodules/$(JANSSON)
 
 LIBCONFIG             := libconfig
-LIBCONFIG_VERSION     := $(LIBCONFIG)-1.5
-LIBCONFIG_SRC         := $(LIBCONFIG_VERSION).tar.gz
-LIBCONFIG_DOWNLOAD    := "https://github.com/hyperrealm/libconfig/archive/v1.5.tar.gz"
+LIBCONFIG_SRC		  := submodules/$(LIBCONFIG)
 
 LIBEXIF               := libexif
 LIBEXIF_VERSION       := $(LIBEXIF)-0.6.21
@@ -144,7 +142,7 @@ $(JANSSON_SRC):
 	$(GIT) submodule update $(JANSSON_SRC)
 
 $(LIBCONFIG_SRC):
-	@$(call DOWNLOAD,$@,$(LIBCONFIG_DOWNLOAD))
+	$(GIT) submodule update $(LIBCONFIG_SRC)
 
 $(LIBEXIF_SRC):
 	@$(call DOWNLOAD,$@,$(LIBEXIF_DOWNLOAD))
@@ -203,11 +201,10 @@ $(JANSSON): $(JANSSON_SRC)
 	@$(MAKE) -C $(JANSSON_SRC)
 
 $(LIBCONFIG): $(LIBCONFIG_SRC)
-	@[ -d $(LIBCONFIG_VERSION) ] || tar -xzf $<
-	@cd $(LIBCONFIG_VERSION) && \
+	@cd $(LIBCONFIG_SRC) && \
 	 autoreconf -i && \
 	 ./configure --prefix=$(PORTLIBS_PATH)/armv6k --host=arm-none-eabi --disable-cxx --disable-examples
-	@$(MAKE) -C $(LIBCONFIG_VERSION)/lib
+	@$(MAKE) -C $(LIBCONFIG_SRC)/lib
 
 $(LIBEXIF): $(LIBEXIF_SRC)
 	@[ -d $(LIBEXIF_VERSION) ] || tar -xjf $<
@@ -291,7 +288,7 @@ install:
 	@[ ! -d $(FREETYPE_VERSION) ] || $(MAKE) -C $(FREETYPE_VERSION) install
 	@[ ! -d $(GIFLIB_SRC) ] || $(MAKE) -C $(GIFLIB_SRC) install
 	@[ ! -d $(JANSSON_SRC) ] || $(MAKE) -C $(JANSSON_SRC) install
-	@[ ! -d $(LIBCONFIG_VERSION) ] || $(MAKE) -C $(LIBCONFIG_VERSION)/lib install
+	@[ ! -d $(LIBCONFIG_SRC) ] || $(MAKE) -C $(LIBCONFIG_SRC)/lib install
 	@[ ! -d $(LIBEXIF_VERSION) ] || $(MAKE) -C $(LIBEXIF_VERSION) install
 	@[ ! -d $(LIBJPEGTURBO_SRC) ] || $(MAKE) -C $(LIBJPEGTURBO_SRC) install
 	@[ ! -d $(LIBMAD_VERSION) ] || $(MAKE) -C $(LIBMAD_VERSION) install
@@ -310,7 +307,6 @@ clean:
 	@$(RM) -r $(FREETYPE_SRC)
 	@$(RM) -r $(GIFLIB_SRC)
 	@$(RM) -r $(JANSSON_SRC)
-	@$(RM) -r $(LIBCONFIG_VERSION)
 	@$(RM) -r $(LIBCONFIG_SRC)
 	@$(RM) -r $(LIBEXIF_VERSION)
 	@$(RM) -r $(LIBEXIF_SRC)
